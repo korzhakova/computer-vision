@@ -54,3 +54,6 @@ print()
 print("Circles: ")
 for key in circles.keys():
     print(f"{key}: {circles[key]}")
+    
+plt.imshow(labeled)
+plt.show()
