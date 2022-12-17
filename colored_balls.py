@@ -7,7 +7,7 @@ def center(hsv, lower, upper):
     mask = cv2.erode(mask, None, iterations=2)
     mask = cv2.dilate(mask, None, iterations=2)
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    
+  
     if len(contours) == 3:
         c = max(contours, key=cv2.contourArea)
         (x, y), radius = cv2.minEnclosingCircle(c)
@@ -17,19 +17,19 @@ def center(hsv, lower, upper):
     
     return None
 
-green_lower = np.array([37, 100, 100])
-green_upper = np.array([160, 205, 192])
+green_lower = np.array([50, 120, 155])
+green_upper = np.array([70, 140, 190])
 
-red_lower = np.array([107, 106, 50])
-red_upper = np.array([237, 236, 180])
+red_lower = np.array([0, 160, 140])
+red_upper = np.array([10, 190, 160])
 
-blue_lower = np.array([27, 150, 140])
-blue_upper = np.array([127, 235, 225])
+blue_lower = np.array([95, 170, 130])
+blue_upper = np.array([117, 190, 150])
 
 cam = cv2.VideoCapture(0)
 cv2.namedWindow("Camera", cv2.WINDOW_KEEPRATIO)
-cam.set(cv2.CAP_PROP_AUTO_EXPOSURE, 1)
-cam.set(cv2.CAP_PROP_EXPOSURE, 3000)
+cam.set(cv2.CAP_PROP_AUTO_EXPOSURE, -1)
+cam.set(cv2.CAP_PROP_EXPOSURE, 0)
 
 colors = ['blue', 'red', 'green']
 sequence = random.sample(colors, 3)
